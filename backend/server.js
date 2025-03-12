@@ -5,6 +5,8 @@ import dotenv from 'dotenv'
 
 // IMPORTING ROUTES
 import housesRoute from "./routes/houses.route.js"
+import authRoute from "./routes/auth.route.js"
+import usersRout from "./routes/users.route.js"
 
 // IMPORT MONGODB CONNECTION
 import connectMongoDB from "./mongoDB/connectMongoDB.js"
@@ -23,7 +25,9 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieParser())
 
 // APPLYING ROUTES
-app.use("/api/houses", housesRoute)
+app.use("/api/houses", housesRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/users", usersRout);
 
 // LISTEN TO SERVER
 app.listen(PORT, () => {
