@@ -1,5 +1,6 @@
 // IMPORT LIBRARIES
 import express from 'express'
+import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 
 // IMPORTING ROUTES
@@ -15,6 +16,11 @@ const PORT = process.env.PORT || 5000
 
 // CREATE APP
 const app = express();
+
+// MIDDLEWARE CONFIG
+app.use(express.json({limit: "10mb"}));
+app.use(express.urlencoded({extended: true}));
+app.use(cookieParser())
 
 // APPLYING ROUTES
 app.use("/api/houses", housesRoute)

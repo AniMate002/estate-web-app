@@ -12,3 +12,17 @@ export const getAllHouses = async (req, res) => {
     }
 }
 
+export const getHouseById = async (req, res) => {
+    try {
+        const { id } = req.params
+        console.log("ID:", id)
+        if(!id) return res.status(400).json({message: "Error: No houseId provided"})
+        const house = await House.findById(id)
+        if(!house) return res.status(404).json({message: "House with such id was not found"})
+        return res.status(200).json(house)
+    } catch (error) {
+        const errorMessage = e instanceof Error ? e.message : "Unknown error";
+        console.log("Error in getHouseById controller: ", errorMessage);
+        res.status(500).json({message: errorMessage});
+    }
+}
