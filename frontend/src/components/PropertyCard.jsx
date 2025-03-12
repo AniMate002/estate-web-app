@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./PropertyCard.module.css";
 
 const PropertyCard = ({ house }) => {
+    console.log("SINGLE HOUSE:", house)
     return (
         // <div className={styles.propertyCard}>
         //     <div className={styles.imageContainer}>
@@ -16,7 +17,7 @@ const PropertyCard = ({ house }) => {
         //     <p className={styles.price}>${house.price}</p>
         //     <button>Invest now</button>
         // </div>
-        <Link to={`/property/${house.id}`} state={{ house }} className={styles.propertyCard}>
+        <Link to={`/property/${house._id}`} state={{ house }} className={styles.propertyCard}>
             <div className={styles.imageContainer}>
                 {house.image ? (
                     <img src={house.image} alt={house.name} />
