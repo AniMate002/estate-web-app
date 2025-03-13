@@ -7,6 +7,7 @@
     /* Приховує горизонтальний скрол */
     overflow-y: auto;
     /* Дозволяє вертикальний скрол при потребі */
+    background-color: white;
 }
 
 
@@ -20,21 +21,23 @@
 
 .header h1 {
     font-size: 36px;
-    color: #1a1a1a;
+    color: rgb(255, 255, 255);
     margin-bottom: 10px;
 }
 
 .header p {
     font-size: 18px;
-    color: #444;
+    color: #ffffff;
 }
 
 /* Панель пошуку */
 .searchBar {
+    width: fit-content;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    margin: 20px 0;
+    margin: 20px auto;
     padding: 15px;
     background: white;
     border-radius: 10px;
@@ -49,19 +52,27 @@
     font-size: 16px;
 }
 
+input:focus{
+    outline: none;
+}
+
 .searchButton {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 7px 40px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
+    border: 1px solid #4CAF50;
+    transition: all 0.2s;
 }
 
-.advanced {
-    background-color: #ddd;
-    color: black;
+.searchButton:hover{
+    background-color: white;
+    color: #4CAF50;
+    border-color: #4CAF50;
 }
 
 /* Список об'єктів */
@@ -151,9 +162,9 @@ html {
 
 /* Список об'єктів */
 .propertyList {
-    width: 90%;
+    width: 100%;
     /* Щоб не було вузьким */
-    max-width: 1200px;
+    max-width: 1300px;
     /* Обмеження для великих екранів */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -192,4 +203,51 @@ html {
     font-size: 24px;
     font-weight: bold;
     color: #333;
+}
+
+.main_image_wrapper{
+    width: 100%;
+    background-image: url(https://images.pexels.com/photos/1475938/pexels-photo-1475938.jpeg?auto=compress&cs=tinysrgb&w=1980&h=1280&dpr=2);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.tags{
+    background-color: white;
+    border-radius: 30px;
+    padding: 10px 20px;
+    width: fit-content;
+    margin: 0 auto;
+    font-size: 15px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.tags > span{
+    color: #367937;
+}
+
+
+.sort_container{
+    margin-top: 50px;
+    width: 100%;
+    max-width: 1300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sort_container > div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #d9d9d9;
+    color: #4CAF50;
+    background-color: #d8f1d9;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: small;
+    font-weight: bold;
 }
