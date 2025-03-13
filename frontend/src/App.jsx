@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import MainPage from "./pages/MainPage";
 import PropertyDetails from "./pages/PropertyDetails";
 import "./App.css"
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />}/>
         <Route path="/property/:id" element={<PropertyDetails />} />
+        <Route path="*" element={<NotFoundPage />}/>
       </Routes>
     </Router>
   );
