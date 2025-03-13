@@ -3,9 +3,27 @@ import { User } from "../models/user.model.js";
 
 export const getAllHouses = async (req, res) => {
     try{
+        const { name, location } = req.query;
+
+        if (name || location) {
+            const finalSearch = `${name || ""} ${location || ""}`.trim();
+
+            // Only search if finalSearch is not empty
+            if (finalSearch) {
+                const houses = await House.find(
+                    { $text: { $search: finalSearch } },
+                    { score: { $meta: 'textScore' } }
+                ).sort({ score: { $meta: 'textScore' } });
+
+                return res.status(200).json(houses);
+            }
+        }
+
+        // If no search params, return all houses
         const houses = await House.find();
         console.log("HOUSES: ", houses);
-        return res.status(200).json(houses)
+
+        return res.status(200).json(houses);
     }catch(e){
         const errorMessage = e instanceof Error ? e.message : "Unknown error";
         console.log("Error in getAllHouses controller: ", errorMessage);
@@ -54,6 +72,19 @@ export const likeUnlikeHouse = async(req, res) => {
     } catch (e) {
         const errorMessage = e instanceof Error ? e.message : "Unknown error";
         console.log("Error in likeUnlikeHouse controller: ", errorMessage);
+        res.status(500).json({error: errorMessage});
+    }
+}
+
+export const searchHouses = async (req, res) => {
+    try {
+        const { name, location } = req.query;
+        const finalSearch = `${name || ""} ${location || ""}`.trim();
+        const houses = await House.find({ $text: { $search: finalSearch}})
+        return res.status(200).json(houses)
+    } catch (e) {
+        const errorMessage = e instanceof Error ? e.message : "Unknown error";
+        console.log("Error in searchHouses controller: ", errorMessage);
         res.status(500).json({error: errorMessage});
     }
 }

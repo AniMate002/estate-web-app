@@ -13,4 +13,6 @@ const houseSchema = new mongoose.Schema({
     image: { type: String, required: true }
 }, { timestamps: true })
 
+houseSchema.index({name: 'text', location: 'text', description: 'text'})
+
 export const House = mongoose.model("House", houseSchema)

@@ -12,28 +12,37 @@ const MainPage = () => {
     const [houses, setHouses] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-  
+
+    const [name, setName] = useState("")
+    const [location, setLocation] = useState("")
+    
+    const fetchHouses = async (name="", location="") => {
+      try {
+        setLoading(true);
+        let URI = "/api/houses"
+        if(name || location) URI += "/?name=" + name + "&location=" + location;
+        const res = await fetch(URI);
+        const data = await res.json();
+        if (!data) throw new Error("Data not received");
+        if (data.error) throw new Error(data.error);
+        setHouses(data);
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "Unknown error");
+      } finally {
+        setLoading(false);
+      }
+    };
+
     useEffect(() => {
-      const fetchHouses = async () => {
-        try {
-          setLoading(true);
-          const res = await fetch("/api/houses");
-          const data = await res.json();
-          if (!data) throw new Error("Data not received");
-          if (data.error) throw new Error(data.error);
-          setHouses(data);
-        } catch (e) {
-          setError(e instanceof Error ? e.message : "Unknown error");
-        } finally {
-          setLoading(false);
-        }
-      };
-  
       fetchHouses();
     }, []);
+
+    const handleSearchHouses = (e) => {
+      e.preventDefault();
+      fetchHouses(name, location);
+    }
   
     if (error) return <div>Error: {error}</div>;
-
   return (
     <div className={styles.container}>
       <div className={styles.main_image_wrapper}>
@@ -49,11 +58,11 @@ const MainPage = () => {
             </p>
         </header>
         {/* SEARCH BAR */}
-        <div className={styles.searchBar}>
-            <Input Icon={GoHome} placeholder={"Enter address"}/>
-            <Input Icon={GoLocation} placeholder={"Location"}/>
+        <form onSubmit={handleSearchHouses} className={styles.searchBar}>
+            <Input value={name} onChange={e => setName(e.target.value)} Icon={GoHome} placeholder={"Enter name / description"}/>
+            <Input value={location} onChange={e => setLocation(e.target.value)} Icon={GoLocation} placeholder={"Location"}/>
             <button className={styles.searchButton}>Search Property</button>
-        </div>
+        </form>
       </div>
 
       {/* NUMBER OF RESULT AND SORT */}

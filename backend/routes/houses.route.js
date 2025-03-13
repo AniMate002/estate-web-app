@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllHouses, getHouseById, likeUnlikeHouse } from '../controllers/houses.controller.js';
+import { getAllHouses, getHouseById, likeUnlikeHouse, searchHouses } from '../controllers/houses.controller.js';
 import { protectRoute } from "../middleware/protectRoute.js";
 
 const router = Router()
