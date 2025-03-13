@@ -1,12 +1,58 @@
+/* Уточнені стилі для body та html */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Оновлені стилі для контейнера */
+.container {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    max-width: 100%;
+    padding: 0px;
+    min-height: 100vh;
+    /* Займає весь екран по висоті */
+    margin: 0 auto;
+    /* Центруємо контейнер */
+    padding: 0 var(--padding);
+    /* Відступи зліва та справа */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* Вирівнюємо контент по вертикалі */
+    max-width: var(--max-width);
+    /* Обмежуємо максимальну ширину */
+    box-sizing: border-box;
+    /* Враховуємо відступи */
+}
+
 .propertyDetails {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    /* Обмежуємо ширину */
+    padding: 30px;
+    border-radius: 25px;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    /* Додаємо відступ між цим блоком та наступним */
+    /* Центруємо контент */
+    background-color: white;
+    box-sizing: border-box;
+    /* Додаємо для врахування відступів */
 }
 
 .detailsContainer {
     display: flex;
+    justify-content: space-evenly;
     max-width: 800px;
     width: 100%;
     background: #f9f9f9;
@@ -77,4 +123,130 @@
     color: red;
     font-size: 24px;
     text-align: center;
+}
+
+.recommendedTitle {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.recommendedList {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    gap: 50px 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.recommendedList .propertyCard {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+    /* Мінімальна ширина, щоб виглядало гарно */
+    max-width: 32%;
+    /* Щоб в один рядок вміщувалися три картки */
+}
+
+.imageContainer {
+    flex: 1;
+    max-width: 50%;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.placeholder {
+    width: 100%;
+    height: 250px;
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.textContainer {
+    flex: 1;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.textContainer h1 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #000;
+}
+
+.textContainer p {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #000;
+}
+
+.price {
+    font-weight: bold;
+    color: #000;
+}
+
+.buyButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buyButton:hover {
+    background-color: #e65c00;
+}
+
+.error {
+    color: red;
+    font-size: 24px;
+    text-align: center;
+}
+
+.recommendedFooter {
+    margin: 40px auto;
+    padding-bottom: 10px;
+    width: 100%;
+    max-width: 1200px;
+    background: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .detailsContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .imageContainer {
+        max-width: 100%;
+    }
+
+    .textContainer {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .recommendedList {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .recommendedList .propertyCard {
+        max-width: 100%;
+    }
 }
