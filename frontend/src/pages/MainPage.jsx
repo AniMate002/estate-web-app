@@ -5,7 +5,7 @@ import Header from '../components/Header/Header';
 import Input from '../components/Input/Input'
 import { GoHome, GoLocation } from "react-icons/go";
 import Loading from '../components/Loading/Loading';
-import { IoIosArrowDown } from "react-icons/io";
+import Sort from '../components/Sort/Sort';
 
 const MainPage = () => {
 
@@ -15,6 +15,10 @@ const MainPage = () => {
 
     const [name, setName] = useState("")
     const [location, setLocation] = useState("")
+
+    // SORT TYPES: createdAt, name, price, square
+    const [sortType, setSortType] = useState("createdAt")
+    const [sortIndex, setSortIndex] = useState(-1);
     
     const fetchHouses = async (name="", location="") => {
       try {
@@ -32,6 +36,27 @@ const MainPage = () => {
         setLoading(false);
       }
     };
+
+    const sortHouses = async (sortType, sortIndex) => {
+      const currentHouses = [...houses];
+      currentHouses.sort((a, b) => {
+        if (sortType === "name") {
+          return -sortIndex * a.name.localeCompare(b.name);
+        } else if (sortType === "createdAt") {
+          return sortIndex * (new Date(a.createdAt) - new Date(b.createdAt));
+        } else if (sortType === "price") {
+          return sortIndex * (a.price - b.price);
+        } else if (sortType === "square") {
+          return sortIndex * (a.square - b.square);
+        }
+        return 0;
+      })
+      setHouses(currentHouses)
+    }
+
+    useEffect(() => {
+      sortHouses(sortType, sortIndex)
+    }, [sortIndex, sortType])
 
     useEffect(() => {
       fetchHouses();
@@ -66,13 +91,10 @@ const MainPage = () => {
       </div>
 
       {/* NUMBER OF RESULT AND SORT */}
-      <div className={styles.sort_container}>
+      {loading ? (null) : (<div className={styles.sort_container}>
         <p>Showing total {houses.length} results</p>
-        <div>
-          <p>Most popular</p>
-          <IoIosArrowDown />
-        </div>
-      </div>
+        <Sort sortType={sortType} setSortType={setSortType} options={["createdAt", "name", "price", "square"]}/>
+      </div>)}
       
       {/* RENDERED HOUSES */}
       {loading ? (

@@ -205,15 +205,3 @@ html {
     color: #666;
 }
 
-.sort_container>div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border: 1px solid #d9d9d9;
-    color: #4CAF50;
-    background-color: #d8f1d9;
-    border-radius: 5px;
-    padding: 5px 15px;
-    font-size: small;
-    font-weight: bold;
-}

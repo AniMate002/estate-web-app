@@ -7,7 +7,36 @@
   }
 }
 
+@keyframes rotate180{
+  from{
+      transform: rotate(0deg);
+  }
+  to{
+      transform: rotate(180deg);
+  }
+}
+
+@keyframes show-modal{
+  from{
+    display: none;
+    opacity: 0;
+  }
+  to{
+    display: flex;
+    opacity: 1;
+    z-index: 10;
+  }
+}
+
+.display-modal{
+  animation: show-modal 0.2s linear forwards;
+}
+
 .rotating-element {
   animation: rotate 2s linear infinite;
   color: #4CAF50;
+}
+
+.rotate-180deg{
+  animation: rotate180 0.2s linear forwards;
 }
