@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import * as styles from "./Header.module.css"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthProvider'
 import Loading from '../Loading/Loading'
 
 const Header = () => {
   const { authUser, setAuthUser } = useAuth()
+  const navigate = useNavigate()
 
   const [loading, setLoading] = useState(false)
   useEffect(() => {
@@ -34,7 +35,7 @@ const Header = () => {
   }
   return (
     <div className={styles.header_container}>
-        <h1 className={styles.logo}>Estate App</h1>
+        <h1 style={{cursor: "pointer"}} onClick={() => navigate("/")} className={styles.logo}>Estate App</h1>
         <div className={styles.nav_container}>
           <Link to={"/"}>Home</Link>
           <Link to={"/"}>Properties</Link>

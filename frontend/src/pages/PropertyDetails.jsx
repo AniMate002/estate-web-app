@@ -47,8 +47,8 @@ const PropertyDetails = () => {
     // const recommendedHouses = houses.filter(h => h._id !== id).sort(() => 0.5 - Math.random()).slice(0, 3);
     const recommendedHouses = houses
         .filter(h => h._id !== id) // Виключаємо поточне житло
-        .sort(() => 0.5 - Math.random()) // Перемішуємо список
-        .slice(0, 5); // Вибираємо перші 5 елементів
+        .sort(() => 0.6 - Math.random()) // Перемішуємо список
+        .slice(0, 6); // Вибираємо перші 6 елементів
 
     return (
         <div className={styles.container}> {/* Обгортка для центрування */}

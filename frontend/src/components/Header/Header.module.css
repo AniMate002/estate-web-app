@@ -22,7 +22,7 @@
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     display: flex;
-    gap: 10px;
+    gap: 30px;
     justify-content: center;
     align-items: center;
 }
