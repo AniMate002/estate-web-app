@@ -1,9 +1,9 @@
 import React from 'react'
 import { VscLoading } from "react-icons/vsc";
 
-const Loading = () => {
+const Loading = ({fontSize=70}) => {
   return (
-    <VscLoading className='rotating-element' style={{fontSize: 70}}/>
+    <VscLoading className='rotating-element' style={{fontSize}}/>
   )
 }
 

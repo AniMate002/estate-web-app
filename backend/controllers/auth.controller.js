@@ -41,7 +41,7 @@ export const logIn = async (req, res) => {
         if(!user) return res.status(404).json({error: "User with this email was not found"});
         
         const matchPasswords = await bcrypt.compare(password, user.password);
-        if(!matchPasswords) return res.status(400).json({error: "Wrong password"});
+        if(!matchPasswords) return res.status(400).json({error: "Password is incorrent"});
         
         generateToken(user.id, res);
         return res.status(200).json(user);
@@ -60,6 +60,20 @@ export const logOut = async (req, res) => {
     } catch (e) {
         const errorMessage = e instanceof Error ? e.message : "Unknown error";
         console.log("Error in logIn controller: ", errorMessage);
+        res.status(500).json({error: errorMessage});
+    }
+}
+
+export const getMe = async (req, res) => {
+    try {
+        const { id } = req.user;
+        if(!id) return res.status(400).json({error: "User id not provided"});
+        const user = await User.findById(id);
+        if(!user) return res.status(404).json({error: "User not found"});
+        return res.status(200).json(user)
+    } catch (e) {
+        const errorMessage = e instanceof Error ? e.message : "Unknown error";
+        console.log("Error in getMe controller: ", errorMessage);
         res.status(500).json({error: errorMessage});
     }
 }

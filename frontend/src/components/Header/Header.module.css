@@ -67,3 +67,56 @@
     transition: all 0.2s;
 
 }
+
+.logged_container{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.profile_container {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.profile_container > span{
+    font-weight: bold;
+}
+
+.avatar_container{
+    border: 2px solid rgb(96, 179, 55);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+}
+
+.avatar_image{
+    max-width: 35px;
+    max-height: 35px;
+}
+
+.logout_button{
+    background: rgb(52, 52, 52);
+    color: white;
+    border: 2px solid rgb(52, 52, 52);
+    border-radius: 10px;
+    padding: 7px 20px;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 90px;
+    font-size: small;
+    font-weight: bold;
+}
+
+.logout_button:hover{
+    background: rgb(88, 88, 88);
+    border-color: transparent;
+}
