@@ -1,0 +1,84 @@
+.signupContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.signupCard {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    box-sizing: border-box;
+}
+
+.signupTitle {
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+    width: 100%;
+}
+
+.signupForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.signupInput {
+    width: 100%;
+    max-width: 280px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: block;
+}
+
+.signupButton {
+    background-color: rgb(96, 179, 55);
+    color: white;
+    padding: 0.8rem;
+    border: 2px solid rgb(96, 179, 55);
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    max-width: 280px;
+    margin: 10px auto 0 auto;
+    display: block;
+    box-sizing: border-box;
+}
+
+.signupButton:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+    border-color: grey;
+}
+
+.signupButton:hover:not(:disabled) {
+    background-color: darkgreen;
+    border-color: darkgreen;
+}
+
+.signupError {
+    color: red;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}

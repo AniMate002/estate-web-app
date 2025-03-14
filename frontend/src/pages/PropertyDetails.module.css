@@ -6,6 +6,10 @@ body {
     width: 100%;
     height: 100%;
     display: block;
+    background-color: white;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    /* Щоб уникнути горизонтального скролу */
 }
 
 /* Оновлені стилі для контейнера */
@@ -43,8 +47,6 @@ body {
     margin: 0 auto;
     margin-top: 40px;
     margin-bottom: 40px;
-    /* Додаємо відступ між цим блоком та наступним */
-    /* Центруємо контент */
     background-color: white;
     box-sizing: border-box;
     /* Додаємо для врахування відступів */
@@ -59,24 +61,6 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.imageContainer {
-    flex: 1;
-    max-width: 50%;
-}
-
-.imageContainer img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.placeholder {
-    width: 100%;
-    height: 250px;
-    background: #ccc;
-    border-radius: 10px;
 }
 
 .textContainer {
@@ -97,32 +81,6 @@ body {
     margin: 5px 0;
     font-size: 18px;
     color: #000;
-}
-
-.price {
-    font-weight: bold;
-    color: #000;
-}
-
-.buyButton {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #ff6600;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.buyButton:hover {
-    background-color: #e65c00;
-}
-
-.error {
-    color: red;
-    font-size: 24px;
-    text-align: center;
 }
 
 .recommendedTitle {
@@ -198,15 +156,19 @@ body {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 18px;
-    background-color: #ff6600;
+    background-color: #4CAF50;
     color: white;
-    border: none;
+    border: 1px solid #4CAF50;
     border-radius: 5px;
     cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.2s;
 }
 
 .buyButton:hover {
-    background-color: #e65c00;
+    background-color: white;
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
 }
 
 .error {
@@ -225,6 +187,26 @@ body {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
+
+
+.main_image_wrapper {
+    margin: 20px auto 0;
+    background-color: white;
+    max-width: 80%;
+    /* Робимо хедер на всю ширину */
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    align-items: center;
+    border-radius: 30px;
+    position: relative;
+    width: calc(100% - 40px);
+    /* Залишаємо трохи місця з боків */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Додаємо тінь для ефекту "плаваючого" хедера */
+}
+
+
 
 @media (max-width: 768px) {
     .detailsContainer {

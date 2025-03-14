@@ -1,0 +1,87 @@
+/* LoginPage.module.css */
+
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+    margin: 0;
+}
+
+.loginCard {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    box-sizing: border-box;
+}
+
+.loginTitle {
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+    width: 100%;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.loginInput {
+    width: 100%;
+    max-width: 280px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: block;
+}
+
+.loginButton {
+    background-color: rgb(96, 179, 55);
+    color: white;
+    padding: 0.8rem;
+    border: 2px solid rgb(96, 179, 55);
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    max-width: 280px;
+    margin: 10px auto 0 auto;
+    display: block;
+    box-sizing: border-box;
+}
+
+.loginButton:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+    border-color: grey;
+}
+
+.loginButton:hover:not(:disabled) {
+    background-color: darkgreen;
+    border-color: darkgreen;
+}
+
+.loginError {
+    color: red;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}

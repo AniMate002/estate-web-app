@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./PropertyDetails.module.css";
 import PropertyCard from "../components/PropertyCard";
+// import styles from "./app.module.css"
+import Header from '../components/Header/Header';
 
 const PropertyDetails = () => {
     const { id } = useParams();
@@ -50,12 +52,28 @@ const PropertyDetails = () => {
         .sort(() => 0.6 - Math.random()) // Перемішуємо список
         .slice(0, 6); // Вибираємо перші 6 елементів
 
+    const formatPrice = (price) => {
+        // Перевірка чи це число
+        const numPrice = typeof price === "number" ? price : parseFloat(price);
+
+        if (numPrice >= 1000000) {
+            return (numPrice / 1000000).toFixed(1) + 'M';
+        }
+        if (numPrice >= 1000) {
+            return (numPrice / 1000).toFixed(1) + 'K';
+        }
+        return numPrice.toString();
+    };
+
     return (
         <div className={styles.container}> {/* Обгортка для центрування */}
             {loading ? (
                 <h1>Loading</h1>
             ) : (
                 <>
+                    <div className={styles.main_image_wrapper}>
+                        <Header />
+                    </div>
                     <div className={styles.propertyDetails}>
                         <div className={styles.detailsContainer}>
                             <div className={styles.imageContainer}>
@@ -71,7 +89,7 @@ const PropertyDetails = () => {
                                 <p><strong>Beds:</strong> {house?.beds} | <strong>Baths:</strong> {house?.baths}</p>
                                 <p><strong>Size:</strong> {house?.square} sqft</p>
                                 <p className={styles.description}><strong>Description:</strong> {house?.description}</p>
-                                <p className={styles.price}><strong>Price:</strong> ${house?.price} ({house?.discount}%)</p>
+                                <p className={styles.price}><strong>Price:</strong> ${formatPrice(house?.price)}</p>
                                 <button className={styles.buyButton}>Buy Now</button>
                             </div>
                         </div>

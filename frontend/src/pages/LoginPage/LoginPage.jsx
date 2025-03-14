@@ -15,7 +15,7 @@ const LoginPage = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const handleLogin = async(e) => {
+    const handleLogin = async (e) => {
         e.preventDefault()
         setLoading(true)
         try {
@@ -24,33 +24,54 @@ const LoginPage = () => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({email, password})
+                body: JSON.stringify({ email, password })
             })
 
             const data = await res.json();
-            if("error" in data) throw new Error(data.error);
+            if ("error" in data) throw new Error(data.error);
             setError(null)
             setAuthUser(data)
             navigate("/")
         } catch (e) {
             setError(e.message)
             console.log("Error in login handler: ", e.message);
-        } finally{
+        } finally {
             setLoading(false)
         }
     }
 
-  return (
-    <div>
-        <h1>Login</h1>
-        <form onSubmit={handleLogin}>
-            <Input value={email} type={"email"} onChange={e => setEmail(e.target.value)} placeholder={"Email"} Icon={MdOutlineEmail}/>
-            <Input value={password} type={"password"} onChange={e => setPassword(e.target.value)} placeholder={"Password"} Icon={MdPassword}/>
-            <button disabled={loading} style={{width: "100%", border: "2px solid green"}} type='submit'>{loading ? "Loading..." : "Login"}</button>
-        </form>
-        {error && <h2>{error}</h2>}
-    </div>
-  )
+    return (
+        <div className={styles.loginContainer}>
+            <div className={styles.loginCard}>
+                <h1 className={styles.loginTitle}>Login</h1>
+                <form onSubmit={handleLogin} className={styles.loginForm}>
+                    <Input
+                        value={email}
+                        type={"email"}
+                        onChange={e => setEmail(e.target.value)}
+                        placeholder={"Email"}
+                        Icon={MdOutlineEmail}
+                        className={styles.loginInput}
+                    />
+                    <Input
+                        value={password}
+                        type={"password"}
+                        onChange={e => setPassword(e.target.value)}
+                        placeholder={"Password"}
+                        Icon={MdPassword}
+                        className={styles.loginInput}
+                    />
+                    <button
+                        disabled={loading}
+                        className={styles.loginButton}
+                        type='submit'>
+                        {loading ? "Loading..." : "Login"}
+                    </button>
+                </form>
+                {error && <h2 className={styles.loginError}>{error}</h2>}
+            </div>
+        </div>
+    )
 }
 
 export default LoginPage

@@ -7,7 +7,7 @@ import { useAuth } from '../../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
 const SignupPage = () => {
-    const [newUser, setNewUser] = useState({name: "", email: "", password: ""});
+    const [newUser, setNewUser] = useState({ name: "", email: "", password: "" });
 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -21,35 +21,59 @@ const SignupPage = () => {
         try {
             const res = await fetch("/api/auth/signup", {
                 method: "POST",
-                headers:{
+                headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(newUser)
             })
             const data = await res.json();
-            if("error" in data) throw new Error(data.error);
+            if ("error" in data) throw new Error(data.error);
             setError(null);
             setAuthUser(data);
             navigate("/");
         } catch (e) {
             console.log("Error in singup: ", e.message)
             alert("Error in singup: " + e.message)
-        }finally{
+        } finally {
             setLoading(false)
         }
     }
-  return (
-    <div>
-        <h1>Signup</h1>
-        <form onSubmit={handleSignup}>
-            <Input value={newUser.name} onChange={e => setNewUser({...newUser, name: e.target.value})} placeholder={"Name"} Icon={FaRegUser} iconsSize={20}/>
-            <Input value={newUser.email} onChange={e => setNewUser({...newUser, email: e.target.value})} placeholder={"Email"} Icon={MdOutlineEmail} type="email"/>
-            <Input value={newUser.password} onChange={e => setNewUser({...newUser, password: e.target.value})} placeholder={"Password"} Icon={MdPassword} type="password"/>
-            <button disabled={loading} style={{width: "100%", border: "2px solid black"}} type='submit'>{loading ? "Loading..." : "Sign up"}</button>
-        </form>
-        {error && <h2 style={{color: "red"}}>{error}</h2>}
-    </div>
-  )
+    return (
+        <div className={styles.signupContainer}>
+            <div className={styles.signupCard}>
+                <h1 className={styles.signupTitle}>Signup</h1>
+                <form onSubmit={handleSignup} className={styles.signupForm}>
+                    <Input
+                        value={newUser.name}
+                        onChange={e => setNewUser({ ...newUser, name: e.target.value })}
+                        placeholder={"Name"}
+                        Icon={FaRegUser}
+                        className={styles.signupInput}
+                    />
+                    <Input
+                        value={newUser.email}
+                        onChange={e => setNewUser({ ...newUser, email: e.target.value })}
+                        placeholder={"Email"}
+                        Icon={MdOutlineEmail}
+                        type="email"
+                        className={styles.signupInput}
+                    />
+                    <Input
+                        value={newUser.password}
+                        onChange={e => setNewUser({ ...newUser, password: e.target.value })}
+                        placeholder={"Password"}
+                        Icon={MdPassword}
+                        type="password"
+                        className={styles.signupInput}
+                    />
+                    <button disabled={loading} className={styles.signupButton} type='submit'>
+                        {loading ? "Loading..." : "Sign up"}
+                    </button>
+                </form>
+                {error && <h2 className={styles.signupError}>{error}</h2>}
+            </div>
+        </div>
+    )
 }
 
 export default SignupPage

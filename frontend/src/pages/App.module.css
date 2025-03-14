@@ -172,6 +172,7 @@ html {
 
 .main_image_wrapper {
     width: 100%;
+    padding-top: 20px;
     background-image: url(https://images.pexels.com/photos/1475938/pexels-photo-1475938.jpeg?auto=compress&cs=tinysrgb&w=1980&h=1280&dpr=2);
     background-repeat: no-repeat;
     background-position: center;
@@ -204,4 +205,3 @@ html {
     justify-content: space-between;
     color: #666;
 }
-
