@@ -55,37 +55,39 @@ const PropertyDetails = () => {
             {loading ? (
                 <h1>Loading</h1>
             ) : (
-                <div className={styles.propertyDetails}>
-                    <div className={styles.detailsContainer}>
-                        <div className={styles.imageContainer}>
-                            {house?.image ? (
-                                <img src={house.image} alt={house.name} />
-                            ) : (
-                                <div className={styles.placeholder}></div>
-                            )}
-                        </div>
-                        <div className={styles.textContainer}>
-                            <h1>{house?.name}</h1>
-                            <p><strong>Location:</strong> {house?.location}</p>
-                            <p><strong>Beds:</strong> {house?.beds} | <strong>Baths:</strong> {house?.baths}</p>
-                            <p><strong>Size:</strong> {house?.square} sqft</p>
-                            <p className={styles.description}><strong>Description:</strong> {house?.description}</p>
-                            <p className={styles.price}><strong>Price:</strong> ${house?.price} ({house?.discount}%)</p>
-                            <button className={styles.buyButton}>Buy Now</button>
+                <>
+                    <div className={styles.propertyDetails}>
+                        <div className={styles.detailsContainer}>
+                            <div className={styles.imageContainer}>
+                                {house?.image ? (
+                                    <img src={house.image} alt={house.name} />
+                                ) : (
+                                    <div className={styles.placeholder}></div>
+                                )}
+                            </div>
+                            <div className={styles.textContainer}>
+                                <h1>{house?.name}</h1>
+                                <p><strong>Location:</strong> {house?.location}</p>
+                                <p><strong>Beds:</strong> {house?.beds} | <strong>Baths:</strong> {house?.baths}</p>
+                                <p><strong>Size:</strong> {house?.square} sqft</p>
+                                <p className={styles.description}><strong>Description:</strong> {house?.description}</p>
+                                <p className={styles.price}><strong>Price:</strong> ${house?.price} ({house?.discount}%)</p>
+                                <button className={styles.buyButton}>Buy Now</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    {/* Recommended Properties Footer */}
+                    <div className={styles.recommendedFooter}>
+                        <h2 className={styles.recommendedTitle}>Recommended Properties</h2>
+                        <div className={styles.recommendedList}>
+                            {recommendedHouses.map(house => (
+                                <PropertyCard key={house._id} house={house} />
+                            ))}
+                        </div>
+                    </div>
+                </>
             )}
 
-            {/* Recommended Properties Footer */}
-            <div className={styles.recommendedFooter}>
-                <h2 className={styles.recommendedTitle}>Recommended Properties</h2>
-                <div className={styles.recommendedList}>
-                    {recommendedHouses.map(house => (
-                        <PropertyCard key={house._id} house={house} />
-                    ))}
-                </div>
-            </div>
         </div>
     );
 };
