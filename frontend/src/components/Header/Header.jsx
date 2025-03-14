@@ -26,7 +26,7 @@ const Header = () => {
       if("error" in data) throw new Error(data.error);
       setAuthUser(null);
     }catch(e){
-      alert("Error in logout: ", e.message);
+      alert("Error in logout: " +  e.message);
       console.log("Error in logout: ", e.message);
     }finally{
       setLoading(false)
