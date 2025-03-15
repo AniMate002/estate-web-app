@@ -7,6 +7,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import { useAuth } from "./context/AuthProvider";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/property/:id" element={<PropertyDetails />} />
           <Route path="/login" element={<LoginPage />}/>
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/profile" element={<ProfilePage />}/>
           <Route path="*" element={<NotFoundPage />}/>
         </Routes>
       </Router>

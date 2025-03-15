@@ -3,6 +3,7 @@ import * as styles from "./Header.module.css"
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthProvider'
 import Loading from '../Loading/Loading'
+import { Toast } from '../Toast/Toast'
 
 const Header = () => {
   const { authUser, setAuthUser } = useAuth()
@@ -26,11 +27,19 @@ const Header = () => {
       const data = await res.json();
       if("error" in data) throw new Error(data.error);
       setAuthUser(null);
+      Toast.fire({
+        icon: "success",
+        title: data.message
+      })
     }catch(e){
-      alert("Error in logout: " +  e.message);
       console.log("Error in logout: ", e.message);
+      Toast.fire({
+        icon: "error",
+        title: e.message
+      })
     }finally{
       setLoading(false)
+      navigate("/")
     }
   }
   return (
@@ -46,7 +55,7 @@ const Header = () => {
         {
           authUser ? (
             <div className={styles.logged_container}>
-              <div className={styles.profile_container}>
+              <div style={{cursor: "pointer"}} onClick={() => navigate("/profile")} className={styles.profile_container}>
                 <div className={styles.avatar_container}>
                   <img alt={"avatar"} className={styles.avatar_image} src={authUser.avatar}/>
                 </div>

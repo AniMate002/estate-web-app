@@ -4,6 +4,7 @@ import Input from '../../components/Input/Input'
 import { MdOutlineEmail, MdPassword } from "react-icons/md";
 import { useAuth } from '../../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import { Toast } from '../../components/Toast/Toast';
 
 const LoginPage = () => {
     const { setAuthUser } = useAuth()
@@ -32,9 +33,17 @@ const LoginPage = () => {
             setError(null)
             setAuthUser(data)
             navigate("/")
+            Toast.fire({
+                icon: "success",
+                title: "Logged in successfully"
+            })
         } catch (e) {
             setError(e.message)
             console.log("Error in login handler: ", e.message);
+            Toast.fire({
+                icon: "error",
+                title: e.message
+            })
         } finally {
             setLoading(false)
         }

@@ -152,7 +152,14 @@ body {
     color: #000;
 }
 
-.buyButton {
+.buttonsContainer {
+    display: flex;
+    width: 100%;
+    gap: 4px;
+}
+
+.buyButton, .likeButton {
+    flex-grow: 1;
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 18px;
@@ -162,13 +169,21 @@ body {
     border-radius: 5px;
     cursor: pointer;
     box-sizing: border-box;
-    transition: all 0.2s;
+    transition: all 0.2s linear;
 }
 
-.buyButton:hover {
+.buyButton:hover{
     background-color: white;
     color: #4CAF50;
     border: 1px solid #4CAF50;
+}
+
+.likeButton:hover {
+    scale: 0.95;
+}
+
+.likeButton {
+    flex-grow: 0;
 }
 
 .error {

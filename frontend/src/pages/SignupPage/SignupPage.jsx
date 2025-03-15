@@ -5,6 +5,7 @@ import { MdOutlineEmail, MdPassword } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 import { useAuth } from '../../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import { Toast } from '../../components/Toast/Toast';
 
 const SignupPage = () => {
     const [newUser, setNewUser] = useState({ name: "", email: "", password: "" });
@@ -31,9 +32,17 @@ const SignupPage = () => {
             setError(null);
             setAuthUser(data);
             navigate("/");
+            Toast.fire({
+                icon: "success",
+                title: "Signed up successfully"
+            })
         } catch (e) {
+            setError(e.message)
             console.log("Error in singup: ", e.message)
-            alert("Error in singup: " + e.message)
+            Toast.fire({
+                icon: "error",
+                title: e.message
+            })
         } finally {
             setLoading(false)
         }
