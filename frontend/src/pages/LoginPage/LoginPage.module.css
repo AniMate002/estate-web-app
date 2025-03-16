@@ -7,7 +7,14 @@
     height: 100vh;
     background-color: white;
     margin: 0;
+
+    /* background-image: url(https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=600&h=400); */
+    background-image: url(https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?auto=compress&cs=tinysrgb&w=600&h=400);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
+
 
 .loginCard {
     background: white;
@@ -23,6 +30,10 @@
     justify-content: center;
     gap: 1rem;
     box-sizing: border-box;
+}
+
+.loginCard p{
+    margin-top: 1rem;
 }
 
 .loginTitle {

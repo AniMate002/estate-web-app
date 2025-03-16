@@ -4,7 +4,7 @@ import Input from '../../components/Input/Input';
 import { MdOutlineEmail, MdPassword } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 import { useAuth } from '../../context/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'
 import { Toast } from '../../components/Toast/Toast';
 
 const SignupPage = () => {
@@ -79,6 +79,9 @@ const SignupPage = () => {
                         {loading ? "Loading..." : "Sign up"}
                     </button>
                 </form>
+                <p>
+                    Already have an account? <Link to={"/login"}>Log in</Link>
+                </p>
                 {error && <h2 className={styles.signupError}>{error}</h2>}
             </div>
         </div>

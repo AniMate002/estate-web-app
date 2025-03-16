@@ -52,24 +52,24 @@ const PropertyDetails = () => {
 
     useEffect(() => {
         if (!house || !authUser || !authUser.liked) return;
-    
+
         setLiked(authUser.liked.includes(house._id));
     }, [house, authUser]);
-    
+
 
     useEffect(() => {
         console.log("LIKED: ", liked)
     }, [liked])
 
-    const handleLike = async() => {
-        if(!authUser){
+    const handleLike = async () => {
+        if (!authUser) {
             Toast.fire({
                 icon: "info",
                 title: "Login to like this house"
             })
             return navigate("/login");
         }
-        if(!house) return;
+        if (!house) return;
         try {
             setLikeLoading(true);
             const res = await fetch("/api/houses/like/" + house._id, {
@@ -80,7 +80,7 @@ const PropertyDetails = () => {
                 body: ""
             });
             const data = await res.json();
-            if("error" in data) throw new Error(data.error);
+            if ("error" in data) throw new Error(data.error);
 
             setAuthUser(prev => {
                 if (!prev) return prev;
@@ -108,7 +108,7 @@ const PropertyDetails = () => {
                 icon: "error",
                 title: e.message
             })
-        }finally{
+        } finally {
             setLikeLoading(false);
         }
     }
@@ -117,9 +117,9 @@ const PropertyDetails = () => {
 
 
     const recommendedHouses = houses
-        .filter(h => h._id !== id) 
-        .sort(() => 0.6 - Math.random()) 
-        .slice(0, 6); 
+        .filter(h => h._id !== id)
+        .sort(() => 0.6 - Math.random())
+        .slice(0, 6);
 
     const formatPrice = (price) => {
         const numPrice = typeof price === "number" ? price : parseFloat(price);
@@ -134,14 +134,17 @@ const PropertyDetails = () => {
     };
 
     return (
-        <div className={styles.container}> 
+        <div className={styles.container}>
+            <div className={styles.main_image_wrapper}>
+                <Header />
+            </div>
             {loading ? (
-                <h1>Loading</h1>
+                // <h1>Loading</h1>
+                <div style={{ marginTop: 250 }}>
+                    <Loading />
+                </div>
             ) : (
                 <>
-                    <div className={styles.main_image_wrapper}>
-                        <Header />
-                    </div>
                     <div className={styles.propertyDetails}>
                         <div className={styles.detailsContainer}>
                             <div className={styles.imageContainer}>
@@ -160,8 +163,8 @@ const PropertyDetails = () => {
                                 <p className={styles.price}><strong>Price:</strong> ${formatPrice(house?.price)}</p>
                                 <div className={styles.buttonsContainer}>
                                     <button className={styles.buyButton}>Buy Now</button>
-                                    <button disabled={likeLoading} onClick={handleLike} style={{backgroundColor: liked ? "#cf2929" : "#777777", borderColor: liked ? "#cf2929" : "#777777"}} className={styles.likeButton}>
-                                        {likeLoading ? <Loading fontSize={20} /> : <FaRegHeart  />}
+                                    <button disabled={likeLoading} onClick={handleLike} style={{ backgroundColor: liked ? "#cf2929" : "#777777", borderColor: liked ? "#cf2929" : "#777777" }} className={styles.likeButton}>
+                                        {likeLoading ? <Loading fontSize={20} /> : <FaRegHeart />}
                                     </button>
                                 </div>
                             </div>

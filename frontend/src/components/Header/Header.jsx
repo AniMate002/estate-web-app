@@ -11,13 +11,13 @@ const Header = () => {
 
   const [loading, setLoading] = useState(false)
   useEffect(() => {
-    
+
     console.log("USER IN HEADER: ", authUser)
   }, [authUser, setAuthUser])
   const handleLogout = async () => {
-    try{
+    try {
       setLoading(true)
-      const res = await fetch("/api/auth/logout",{
+      const res = await fetch("/api/auth/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -25,59 +25,59 @@ const Header = () => {
         body: ""
       })
       const data = await res.json();
-      if("error" in data) throw new Error(data.error);
+      if ("error" in data) throw new Error(data.error);
       setAuthUser(null);
       Toast.fire({
         icon: "success",
         title: data.message
       })
-    }catch(e){
+    } catch (e) {
       console.log("Error in logout: ", e.message);
       Toast.fire({
         icon: "error",
         title: e.message
       })
-    }finally{
+    } finally {
       setLoading(false)
       navigate("/")
     }
   }
   return (
     <div className={styles.header_container}>
-        <h1 style={{cursor: "pointer"}} onClick={() => navigate("/")} className={styles.logo}>Estate App</h1>
-        <div className={styles.nav_container}>
-          <Link to={"/"}>Home</Link>
-          <Link to={"/"}>Properties</Link>
-          <Link to={"/"}>Loan</Link>
-          <Link to={"/"}>About</Link>
-          <Link to={"/"}>Contact</Link>
-        </div>
-        {
-          authUser ? (
-            <div className={styles.logged_container}>
-              <div style={{cursor: "pointer"}} onClick={() => navigate("/profile")} className={styles.profile_container}>
-                <div className={styles.avatar_container}>
-                  <img alt={"avatar"} className={styles.avatar_image} src={authUser.avatar}/>
-                </div>
-                <span>{authUser.name}</span>
+      <h1 style={{ cursor: "pointer" }} onClick={() => navigate("/")} className={styles.logo}>Estate App</h1>
+      <div className={styles.nav_container}>
+        <Link to={"/"}>Home</Link>
+        <Link to={"/"}>Properties</Link>
+        <Link to={"/"}>Loan</Link>
+        <Link to={"/"}>About</Link>
+        <Link to={"/"}>Contact</Link>
+      </div>
+      {
+        authUser ? (
+          <div className={styles.logged_container}>
+            <div style={{ cursor: "pointer" }} onClick={() => navigate("/profile")} className={styles.profile_container}>
+              <div className={styles.avatar_container}>
+                <img alt={"avatar"} className={styles.avatar_image} src={authUser.avatar} />
               </div>
-              <button className={styles.logout_button} disabled={loading} onClick={handleLogout}>
-                {
-                  loading
+              <span>{authUser.name}</span>
+            </div>
+            <button className={styles.logout_button} disabled={loading} onClick={handleLogout}>
+              {
+                loading
                   ?
                   <Loading fontSize={20} />
                   :
                   "Logout"
-                }
-              </button>
-            </div>
-          ) : (
+              }
+            </button>
+          </div>
+        ) : (
           <div className={styles.buttons_container}>
             <Link className={styles.login_button} to={"/login"}>Log in</Link>
-            <Link className={styles.signup_button} to={"signup"}>Join now</Link>
+            <Link className={styles.signup_button} to={"/signup"}>Join now</Link>
           </div>
-          )
-        }
+        )
+      }
     </div>
   )
 }

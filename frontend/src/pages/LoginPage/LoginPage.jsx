@@ -3,7 +3,7 @@ import * as styles from "./LoginPage.module.css"
 import Input from '../../components/Input/Input'
 import { MdOutlineEmail, MdPassword } from "react-icons/md";
 import { useAuth } from '../../context/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'
 import { Toast } from '../../components/Toast/Toast';
 
 const LoginPage = () => {
@@ -77,6 +77,9 @@ const LoginPage = () => {
                         {loading ? "Loading..." : "Login"}
                     </button>
                 </form>
+                <p>
+                    If you don't have an account, you can get one <Link to={"/signup"}>Join now</Link>
+                </p>
                 {error && <h2 className={styles.loginError}>{error}</h2>}
             </div>
         </div>
