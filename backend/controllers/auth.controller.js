@@ -25,7 +25,7 @@ export const singUp = async (req, res) => {
         }else{
             return res.status(401).json({error: "User was not found"})
         }
-    } catch (error) {
+    } catch (e) {
         const errorMessage = e instanceof Error ? e.message : "Unknown error";
         console.log("Error in signUp controller: ", errorMessage);
         res.status(500).json({error: errorMessage});
