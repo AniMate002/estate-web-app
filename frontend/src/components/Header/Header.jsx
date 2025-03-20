@@ -9,9 +9,11 @@ const Header = () => {
   const { authUser, setAuthUser } = useAuth()
   const navigate = useNavigate()
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+
   const [loading, setLoading] = useState(false)
   useEffect(() => {
-
     console.log("USER IN HEADER: ", authUser)
   }, [authUser, setAuthUser])
   const handleLogout = async () => {
@@ -44,8 +46,14 @@ const Header = () => {
   }
   return (
     <div className={styles.header_container}>
+      <button className={styles.menu_button} onClick={() => setMenuOpen(!menuOpen)}>
+        ☰
+      </button>
       <h1 style={{ cursor: "pointer" }} onClick={() => navigate("/")} className={styles.logo}>Estate App</h1>
-      <div className={styles.nav_container}>
+      <div className={`${styles.nav_container} ${menuOpen ? styles.open : ""}`}>
+        <button className={styles.close_button} onClick={() => setMenuOpen(false)}>
+          ✖
+        </button>
         <Link to={"/"}>Home</Link>
         <Link to={"/"}>Properties</Link>
         <Link to={"/"}>Loan</Link>

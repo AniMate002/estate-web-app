@@ -5,10 +5,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: white;
     margin: 0;
     background-color: rgb(96, 179, 55);
-    /* background-image: url(https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=600&h=400); */
     background-image: url(https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?auto=compress&cs=tinysrgb&w=1980&h=1280);
     background-repeat: no-repeat;
     background-position: center;

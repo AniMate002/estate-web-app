@@ -5,11 +5,6 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
-}
-
-.profileContent {
-    width: 100%;
     background: white;
     padding: 30px;
     border-radius: 20px;
@@ -54,6 +49,7 @@
 
 .profileText {
     font-size: 16px;
+    padding: 0 10px;
     color: #555;
 }
 
@@ -106,4 +102,84 @@
     /* Залишаємо трохи місця з боків */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     /* Додаємо тінь для ефекту "плаваючого" хедера */
+}
+
+@media (max-width: 1024px) {
+    
+    .profileContent {
+        padding: 20px;
+    }
+
+    .profileHeader {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .likedHousesList {
+        gap: 10px;
+    }
+
+    .main_image_wrapper {
+        max-width: 90%;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .profileContainer {
+        max-width: 100%;
+    }
+
+    .profileContent {
+        padding: 15px;
+    }
+
+    .avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .userName {
+        font-size: 20px;
+    }
+
+    .userEmail {
+        font-size: 16px;
+    }
+
+    .likedHousesList {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .main_image_wrapper {
+        max-width: 100%;
+        border-radius: 0;
+        margin: 0px
+    }
+}
+
+@media (max-width: 480px) {
+    
+    .profileHeader {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .userInfo {
+        text-align: center;
+    }
+
+    .likedHousesTitle {
+        font-size: 20px;
+    }
+
+    .likedHousesList {
+        gap: 5px;
+    }
+
+    .noHousesText {
+        font-size: 16px;
+    }
 }

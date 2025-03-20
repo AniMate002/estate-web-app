@@ -1,5 +1,4 @@
-.header_container{
-    /* margin: 20px auto 0; */
+.header_container {
     margin: 0 auto;
     background-color: white;
     max-width: 1300px;
@@ -10,69 +9,72 @@
     border-radius: 30px;
     position: relative;
     width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
-.logo{
+.logo {
     font-size: 25px;
     color: rgb(96, 179, 55);
 }
 
-.nav_container{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
+.nav_container {
     display: flex;
     gap: 30px;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-.nav_container > a{
-    color: rgb(113,	116,	113	);   
+.nav_container>a {
+    color: rgb(113, 116, 113);
     transition: all 0.1s ease-in-out;
+    white-space: nowrap;
 }
 
-.nav_container > a:hover{
+.nav_container>a:hover {
     color: rgb(40, 40, 40);
 }
 
-
-.buttons_container{
+.buttons_container {
     display: flex;
     gap: 10px;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-.login_button{
-    background: white;
-    border: 2px solid rgb(52, 52, 52);
+.login_button,
+.signup_button {
     border-radius: 10px;
     padding: 7px 20px;
-    color: rgb(52, 52, 52);
     transition: all 0.2s;
 }
-.login_button:hover, .signup_button:hover{
+
+.login_button {
+    background: white;
+    border: 2px solid rgb(52, 52, 52);
+    color: rgb(52, 52, 52);
+}
+
+.signup_button {
+    background: rgb(52, 52, 52);
+    color: white;
+    border: 2px solid rgb(52, 52, 52);
+}
+
+.login_button:hover,
+.signup_button:hover {
     color: white;
     background: rgb(96, 179, 55);
     border-color: rgb(96, 179, 55);
 }
 
-.signup_button{
-    background: rgb(52, 52, 52);
-    color: white;
-    border: 2px solid rgb(52, 52, 52);
-    border-radius: 10px;
-    padding: 7px 20px;
-    transition: all 0.2s;
-
-}
-
-.logged_container{
+.logged_container {
     display: flex;
     gap: 30px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .profile_container {
@@ -81,11 +83,11 @@
     align-items: center;
 }
 
-.profile_container > span{
+.profile_container>span {
     font-weight: bold;
 }
 
-.avatar_container{
+.avatar_container {
     border: 2px solid rgb(96, 179, 55);
     overflow: hidden;
     display: flex;
@@ -96,12 +98,12 @@
     width: 35px;
 }
 
-.avatar_image{
+.avatar_image {
     max-width: 35px;
     max-height: 35px;
 }
 
-.logout_button{
+.logout_button {
     background: rgb(52, 52, 52);
     color: white;
     border: 2px solid rgb(52, 52, 52);
@@ -117,7 +119,107 @@
     font-weight: bold;
 }
 
-.logout_button:hover{
+.logout_button:hover {
     background: rgb(88, 88, 88);
     border-color: transparent;
+}
+
+/* Адаптивний дизайн */
+@media (max-width: 1300px) {
+    .header_container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .header_container {
+        padding: 14px;
+        text-align: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .menu_button {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 14px;
+        cursor: pointer;
+        color: black;
+        border: 2px solid rgb(52, 52, 52);
+    }
+
+    .close_button {
+        color: black;
+
+    }
+
+    .nav_container {
+        display: none;
+        position: fixed;
+        justify-content: start;
+        left: -250px;
+        top: 0;
+        width: 250px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        padding-top: 100px;
+        gap: 20px;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        transition: left 0.3s ease-in-out;
+    }
+
+    .nav_container.open {
+        left: 0;
+        display: flex;
+    }
+
+    .close_button {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 1025px) {
+
+    .menu_button,
+    .close_button {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .buttons_container {
+        gap: 10px;
+    }
+
+    .header_container {
+        border-radius: 0;
+        /* position: fixed; */
+    }
+
+    .logged_container {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header_container {
+        padding: 10px;
+    }
+
+    .buttons_container {
+        gap: 5px;
+    }
 }

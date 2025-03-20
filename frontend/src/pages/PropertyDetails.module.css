@@ -112,6 +112,7 @@ body {
 .imageContainer {
     flex: 1;
     max-width: 50%;
+    padding: 10px;
 }
 
 .imageContainer img {
@@ -127,26 +128,6 @@ body {
     border-radius: 10px;
 }
 
-.textContainer {
-    flex: 1;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.textContainer h1 {
-    margin: 0 0 10px;
-    font-size: 24px;
-    color: #000;
-}
-
-.textContainer p {
-    margin: 5px 0;
-    font-size: 18px;
-    color: #000;
-}
-
 .price {
     font-weight: bold;
     color: #000;
@@ -155,10 +136,15 @@ body {
 .buttonsContainer {
     display: flex;
     width: 100%;
-    gap: 4px;
+    gap: 10px;
+    padding: 0 10px;
+    /* Додає рівні відступи з обох боків */
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
-.buyButton, .likeButton {
+.buyButton,
+.likeButton {
     flex-grow: 1;
     margin-top: 20px;
     padding: 10px 20px;
@@ -172,7 +158,7 @@ body {
     transition: all 0.2s linear;
 }
 
-.buyButton:hover{
+.buyButton:hover {
     background-color: white;
     color: #4CAF50;
     border: 1px solid #4CAF50;
@@ -221,6 +207,21 @@ body {
     /* Додаємо тінь для ефекту "плаваючого" хедера */
 }
 
+@media (max-width: 1200px) {
+    .recommendedFooter {
+        border-radius: 0px;
+    }
+}
+
+@media (max-width: 900px) {
+    .detailsContainer {
+        border-radius: 0px;
+    }
+
+    .propertyDetails {
+        padding: 0px;
+    }
+}
 
 
 @media (max-width: 768px) {
@@ -245,5 +246,11 @@ body {
 
     .recommendedList .propertyCard {
         max-width: 100%;
+    }
+
+    .main_image_wrapper {
+        border-radius: 0px;
+        max-width: 100%;
+        margin: 0;
     }
 }
