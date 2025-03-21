@@ -19,6 +19,9 @@
     padding: 50px 20px;
     background: url('/header-bg.jpg') no-repeat center center;
     background-size: cover;
+
+
+    box-sizing: border-box;
 }
 
 .header h1 {
@@ -78,7 +81,7 @@ input:focus {
 }
 
 .propertyList {
-    width: 90%;
+    width: 100%;
     max-width: 1300px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -88,6 +91,7 @@ input:focus {
     padding: 0 10px;
     /* Додає відступи з обох сторін */
     justify-content: center;
+    box-sizing: border-box;
 }
 
 
@@ -191,15 +195,36 @@ html {
     margin: 50px 20px 5px 20px;
     width: 100%;
     max-width: 1300px;
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: #666;
-    padding: 0 10px;
+    padding: 0 20px;
     /* Додає відступи по боках */
     box-sizing: border-box;
     /* Враховує padding у ширині */
+}
+
+.propertyList {
+    width: 100%;
+    max-width: 1300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* Рівномірний розподіл */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+
+@media(max-width: 1320px) {
+    .main_image_wrapper {
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+    }
 }
 
 @media (max-width: 1045px) {
@@ -207,20 +232,16 @@ html {
         width: 90%;
         max-width: 1300px;
         display: flex;
-        /* Використовуємо flexbox замість grid */
         flex-wrap: wrap;
         gap: 20px;
         justify-content: space-evenly;
-        /* Рівномірний розподіл */
         margin-top: 20px;
         margin-bottom: 20px;
         padding: 0 10px;
-        /* Додає відступи з боків */
     }
 
     .propertyCard {
         width: calc(50% - 10px);
-        /* Половина ширини мінус половина відступу */
         background: white;
         border-radius: 10px;
         overflow: hidden;
@@ -228,11 +249,35 @@ html {
         padding: 15px;
     }
 
+    .header,
+    .main_image_wrapper,
+    .propertyList,
+    .sort_container {
+        max-width: 1045px;
+        /* Обмеження ширини */
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+        /* Враховує padding у ширині */
+    }
 
+    .propertyList,
+    .sort_container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .propertyList,
+    .sort_container {
+        max-width: 100%;
+        width: 90%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
 /* Для планшетів */
-@media (max-width: 768px) {
+@media (max-width: 790px) {
     .header {
         padding: 30px 10px;
         background-size: cover;
@@ -246,11 +291,60 @@ html {
         font-size: 16px;
     }
 
-    .searchBar {
-        flex-direction: column;
+    /* .searchBar {
         align-items: stretch;
-        width: 90%;
+        width: 80%;
+        padding: 20px;
         margin: 20px auto;
+        max-width: 550px;
+        box-sizing: border-box;
+        border-radius: 20px;
+    } */
+
+    /* .searchBar input,
+    .searchBar select {
+        font-size: 14px;
+        padding: 8px;
+        width: 100%;
+    }
+
+    .searchButton {
+        padding: 7px 20px;
+        font-size: 12px;
+        max-width: 460px;
+        margin: 0 auto;
+        width: 100%;
+        border-radius: 10px;
+    } */
+
+    .sort_container {
+        /* flex-direction: column; */
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .main_image_wrapper {
+        padding-top: 0;
+        margin: 0;
+        /* Центрує */
+        padding: 0;
+        /* Додає рівні відступи */
+    }
+
+    .propertyList,
+    .sort_container {
+        width: 95%;
+        padding: 0 10px;
+    }
+
+    .searchBar {
+        align-items: stretch;
+        width: 80%;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 550px;
+        box-sizing: border-box;
+        border-radius: 20px;
     }
 
     .searchBar input,
@@ -261,27 +355,17 @@ html {
     }
 
     .searchButton {
-        padding: 7px 20px;
+        width: 200%;
+        /* Кнопка займає ширину двох інпутів */
+        padding: 10px;
         font-size: 12px;
+        max-width: 460px;
+        margin: 10px auto;
         width: 100%;
+        border-radius: 10px;
+        height: 45px;
+        box-sizing: border-box;
     }
-
-    .propertyList {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 15px;
-    }
-
-    .sort_container {
-        /* flex-direction: column; */
-        align-items: flex-start;
-        gap: 10px;
-        text-align: left;
-    }
-
-    .main_image_wrapper {
-        padding-top: 0;
-    }
-
 }
 
 /* Для мобільних пристроїв */
@@ -298,7 +382,7 @@ html {
         font-size: 14px;
     }
 
-    .searchBar {
+    /* .searchBar {
         padding: 10px;
     }
 
@@ -311,17 +395,59 @@ html {
     .searchButton {
         padding: 7px 15px;
         font-size: 12px;
-    }
+        width: 100%;
+        border-radius: 10px;
+    } */
 
     .propertyList {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 15px;
+        /* gap: 15px; */
     }
 
     .propertyCard {
         width: 90%;
         /* Щоб картки займали більшу частину екрану */
+    }
+
+    .propertyList,
+    .sort_container {
+        width: 90%;
+        padding: 0 5px;
+    }
+
+    .searchBar {
+        max-width: 350px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+    }
+
+    .searchBar input,
+    .searchBar select {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        /* Враховує padding і border в ширині */
+        /* margin-bottom: 10px; */
+    }
+
+    .searchButton {
+        width: 100%;
+        /* Кнопка також займає всю ширину */
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+        border-radius: 10px;
+        cursor: pointer;
+        box-sizing: border-box;
+        border: 1px solid #4CAF50;
     }
 }

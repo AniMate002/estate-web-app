@@ -47,34 +47,35 @@ const ProfilePage = () => {
         : <p className={styles.noHousesText}>You haven't liked any houses yet.</p>;
 
     return (
-        <div className={styles.profileContainer}>
+        <div className={styles.mainContainer}>
             <div className={styles.main_image_wrapper}>
                 <Header />
             </div>
-            {loading ? (
-                <div className={styles.loadingContainer}>
-                    <Loading />
-                </div>
-            ) : (
-                user && (
-                    <div className={styles.profileContent}>
-                        <div className={styles.profileHeader}>
-                            <img className={styles.avatar} src={user.avatar} alt="User Avatar" />
-                            <div className={styles.userInfo}>
-                                <h1 className={styles.userName}>{user.name}</h1>
-                                <h2 className={styles.userEmail}>{user.email}</h2>
+            <div className={styles.profileContainer}>
+                {loading ? (
+                    <div className={styles.loadingContainer}><Loading /></div>
+                ) : (
+                    user && (
+                        <div className={styles.profileContent}>
+                            <div className={styles.profileHeader}>
+                                <div className={styles.avatarContainer}>
+                                    <img className={styles.avatar} src={user.avatar} alt="User Avatar" />
+                                </div>
+                                <div className={styles.userInfo}>
+                                    {/* <p className={styles.profileText}>Welcome to your profile page!</p> */}
+
+                                    <h1 className={styles.userName}>Name: <span className={styles.profileInfo}>{user.name}</span></h1>
+                                    <h2 className={styles.userEmail}>Mail: <span className={styles.profileInfo}>{user.email}</span></h2>
+                                </div>
+                            </div>
+                            <div className={styles.likedHousesSection}>
+                                <h3 className={styles.likedHousesTitle}>Your Favorite Houses</h3>
+                                <div className={styles.likedHousesGrid}>{renderedLikesHouses}</div>
                             </div>
                         </div>
-                        <div className={styles.profileDetails}>
-                            <p className={styles.profileText}>Welcome to your profile page! Here you can see your liked properties and manage your personal information.</p>
-                        </div>
-                        <div className={styles.likedHousesSection}>
-                            <h3 className={styles.likedHousesTitle}>Your Favorite Houses</h3>
-                            <div className={styles.likedHousesList}>{renderedLikesHouses}</div>
-                        </div>
-                    </div>
-                )
-            )}
+                    )
+                )}
+            </div>
         </div>
     )
 }

@@ -41,8 +41,9 @@ body {
     align-items: center;
     width: 100%;
     max-width: 1200px;
+    /* max-height: 700px; */
     /* Обмежуємо ширину */
-    padding: 30px;
+    /* padding: 30px; */
     border-radius: 25px;
     margin: 0 auto;
     margin-top: 40px;
@@ -55,17 +56,18 @@ body {
 .detailsContainer {
     display: flex;
     justify-content: space-evenly;
-    max-width: 800px;
+    max-width: 1200px;
     width: 100%;
     background: #f9f9f9;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
 .textContainer {
     flex: 1;
-    padding-left: 20px;
+    padding-left: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -137,7 +139,7 @@ body {
     display: flex;
     width: 100%;
     gap: 10px;
-    padding: 0 10px;
+    /* padding: 0 10px; */
     /* Додає рівні відступи з обох боків */
     margin: 0 auto;
     box-sizing: border-box;
@@ -187,19 +189,22 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    box-sizing: border-box;
 }
 
 
 .main_image_wrapper {
     margin: 20px auto 0;
     background-color: white;
-    max-width: 80%;
+    /* max-width: 80%; */
+    max-width: 1400px;
     /* Робимо хедер на всю ширину */
     display: flex;
     justify-content: space-between;
     padding: 0 30px;
     align-items: center;
     border-radius: 30px;
+    box-sizing: border-box;
     position: relative;
     width: calc(100% - 40px);
     /* Залишаємо трохи місця з боків */
@@ -224,7 +229,8 @@ body {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
+
     .detailsContainer {
         flex-direction: column;
         align-items: center;
@@ -251,6 +257,12 @@ body {
     .main_image_wrapper {
         border-radius: 0px;
         max-width: 100%;
-        margin: 0;
+        width: 100%;
+        margin: 0px;
+    }
+
+    .recommendedFooter {
+        padding: 20px;
+        box-sizing: border-box;
     }
 }
