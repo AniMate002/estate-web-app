@@ -8,6 +8,12 @@ import { useAuth } from "../context/AuthProvider";
 import Loading from "../components/Loading/Loading";
 import { Toast } from "../components/Toast/Toast";
 
+import { SlLocationPin } from "react-icons/sl";
+import { MdOutlineKingBed } from "react-icons/md";
+import { LuBath } from "react-icons/lu";
+import { IoIosResize } from "react-icons/io";
+import { RiPriceTag3Fill } from "react-icons/ri";
+
 const PropertyDetails = () => {
     const { id } = useParams();
     const { authUser, setAuthUser } = useAuth();
@@ -165,23 +171,51 @@ const PropertyDetails = () => {
                             </div>
                             <div className={styles.textContainer}>
                                 <h1>{house?.name}</h1>
-                                <p>
-                                    <strong>Location:</strong> {house?.location}
+                                <p
+                                    style={{
+                                        color: "rgb(99, 99, 99)",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: 4,
+                                    }}
+                                >
+                                    <SlLocationPin color='rgb(61, 175, 0)' />
+                                    {house?.location}
                                 </p>
-                                <p>
-                                    <strong>Beds:</strong> {house?.beds} |{" "}
-                                    <strong>Baths:</strong> {house?.baths}
+                                <p
+                                    style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: 4,
+                                        color: "rgb(43, 123, 0)",
+                                    }}
+                                >
+                                    <MdOutlineKingBed /> {house?.beds} |
+                                    <LuBath /> {house?.baths}
                                 </p>
-                                <p>
-                                    <strong>Size:</strong> {house?.square} sqft
+                                <p
+                                    style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: 4,
+                                        color: "rgb(55, 55, 55)",
+                                    }}
+                                >
+                                    <IoIosResize />{" "}
+                                    <span>{house?.square} sq. ft.</span>
                                 </p>
-                                <p className={styles.description}>
-                                    <strong>Description:</strong>{" "}
+                                <p
+                                    className={styles.description}
+                                    style={{ color: "rgb(99, 99, 99)" }}
+                                >
                                     {house?.description}
                                 </p>
-                                <p className={styles.price}>
-                                    <strong>Price:</strong> $
-                                    {formatPrice(house?.price)}
+                                <p
+                                    className={styles.price}
+                                    style={{ color: "rgb(60, 164, 0)" }}
+                                >
+                                    <RiPriceTag3Fill />
+                                    <span>${formatPrice(house?.price)}</span>
                                 </p>
                                 <div className={styles.buttonsContainer}>
                                     <button className={styles.buyButton}>

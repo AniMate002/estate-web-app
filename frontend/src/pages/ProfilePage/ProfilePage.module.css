@@ -4,7 +4,6 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: auto;
-
 }
 
 .profileContainer {
@@ -69,7 +68,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.avatar{
+.avatar {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -82,7 +81,6 @@
     text-align: center;
     max-width: 200px;
     transform: translateY(-80px);
-
 }
 
 .userInfo {
@@ -95,11 +93,23 @@
     font-size: 24px;
     font-weight: bold;
     color: #333;
+    display: flex;
+    align-items: center;
 }
 
 .userEmail {
     font-size: 22px;
-    color: #333;
+    color: rgb(96, 179, 55);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.infoContainer {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .profileText {
@@ -117,7 +127,7 @@
     /* max-width: 900px; */
     padding: 30px;
     box-sizing: border-box;
-    margin-top: 30px;
+    margin-top: -60px;
     text-align: left;
 }
 
@@ -171,6 +181,20 @@
     box-sizing: border-box;
 }
 
+.editProfileBtn {
+    margin-top: 10px;
+    background-color: rgb(96, 179, 55);
+    color: white;
+    transition: all 0.2s;
+}
+
+.editProfileBtn:hover {
+    color: rgb(96, 179, 55);
+    background-color: white;
+    outline: none;
+    border-color: rgb(96, 179, 55);
+}
+
 @media (max-width: 1024px) {
     .likedHousesSection {
         border-radius: 0px;
@@ -182,6 +206,10 @@
 }
 
 @media (max-width: 768px) {
+    .infoContainer {
+        flex-direction: column;
+        margin-top: -70px;
+    }
     .profileHeader {
         flex-direction: column;
         align-items: center;
@@ -209,7 +237,7 @@
         gap: 50px;
     }
 
-    .likedHousesGrid>* {
+    .likedHousesGrid > * {
         width: 100%;
         max-width: 500px;
     }

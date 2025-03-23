@@ -3,9 +3,12 @@ import { useAuth } from "../../context/AuthProvider";
 import * as styles from "./ProfilePage.module.css";
 import Loading from "../../components/Loading/Loading";
 import Header from "../../components/Header/Header";
-
+import { RxDividerHorizontal } from "react-icons/rx";
 import React, { useEffect, useState } from "react";
 import PropertyCard from "../../components/PropertyCard";
+import { MdEdit } from "react-icons/md";
+import { FaRegUser } from "react-icons/fa";
+import { MdOutlineEmail } from "react-icons/md";
 
 const ProfilePage = ({ authUser, loadingAuth, errorAuth }) => {
     // if (errorAuth) return <h1>Error: {errorAuth}</h1>;
@@ -44,18 +47,36 @@ const ProfilePage = ({ authUser, loadingAuth, errorAuth }) => {
                                 <div className={styles.userInfo}>
                                     {/* <p className={styles.profileText}>Welcome to your profile page!</p> */}
 
-                                    <h1 className={styles.userName}>
-                                        Name:{" "}
-                                        <span className={styles.profileInfo}>
+                                    <div className={styles.infoContainer}>
+                                        <p className={styles.userName}>
+                                            <FaRegUser
+                                                style={{ marginRight: 4 }}
+                                            />
                                             {authUser.name}
-                                        </span>
-                                    </h1>
-                                    <h2 className={styles.userEmail}>
-                                        Mail:{" "}
-                                        <span className={styles.profileInfo}>
+                                        </p>
+                                        <RxDividerHorizontal />
+                                        <p
+                                            style={{
+                                                color: "rgb(96, 179, 55)",
+                                            }}
+                                            className={styles.userEmail}
+                                        >
+                                            <MdOutlineEmail size={25} />
                                             {authUser.email}
-                                        </span>
-                                    </h2>
+                                        </p>
+                                        <RxDividerHorizontal />
+                                        <p>
+                                            Joined{" "}
+                                            {new Date(
+                                                authUser.createdAt
+                                            ).toLocaleDateString()}
+                                        </p>
+                                    </div>
+
+                                    <button className={styles.editProfileBtn}>
+                                        <MdEdit style={{ marginRight: 4 }} />
+                                        Edit Profile
+                                    </button>
                                 </div>
                             </div>
                             <div className={styles.likedHousesSection}>
