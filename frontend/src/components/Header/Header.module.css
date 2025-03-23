@@ -170,6 +170,7 @@
         background: white;
         flex-direction: column;
         padding-top: 100px;
+        z-index: 1;
         gap: 20px;
         box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
         transition: left 0.3s ease-in-out;
