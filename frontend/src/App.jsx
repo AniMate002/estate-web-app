@@ -29,6 +29,7 @@ function App() {
             console.log("AUTH USER: ", data);
             if ("error" in data) throw new Error(data.error);
             setAuthUser(data);
+            setErrorAauth(null);
         } catch (e) {
             console.log("Error while trying to login: ", e.message);
             setErrorAauth(e.message);

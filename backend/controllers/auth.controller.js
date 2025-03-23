@@ -48,7 +48,10 @@ export const logIn = async (req, res) => {
         if (!email || !password)
             return res.status(400).json({ error: "Fields can not be ampty" });
 
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email }).populate({
+            path: "liked",
+            model: "House",
+        });
         if (!user)
             return res
                 .status(404)

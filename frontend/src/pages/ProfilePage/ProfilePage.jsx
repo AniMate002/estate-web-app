@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 import PropertyCard from "../../components/PropertyCard";
 
 const ProfilePage = ({ authUser, loadingAuth, errorAuth }) => {
-    if (errorAuth) return <h1>Error: {errorAuth}</h1>;
+    // if (errorAuth) return <h1>Error: {errorAuth}</h1>;
     if (!loadingAuth && !authUser) return <Navigate to={"/login"} />;
 
     console.log("LIKED: ", authUser?.liked);
@@ -34,22 +34,18 @@ const ProfilePage = ({ authUser, loadingAuth, errorAuth }) => {
                     authUser && (
                         <div className={styles.profileContent}>
                             <div className={styles.profileHeader}>
-                                <div className={styles.outAvatarContainer}>
-                                    <div className={styles.avatarContainer}>
-                                        <img
-                                            className={styles.avatar}
-                                            src={authUser.avatar}
-                                            alt='User Avatar'
-                                        />
-                                    </div>
-                                    <div className={styles.avatarInfo}><p className={styles.joinDate}>
-                                        Joined: {new Date(authUser.createdAt).toLocaleDateString()}
-                                    </p></div>
-
+                                <div className={styles.avatarContainer}>
+                                    <img
+                                        className={styles.avatar}
+                                        src={authUser.avatar}
+                                        alt='User Avatar'
+                                    />
                                 </div>
                                 <div className={styles.userInfo}>
+                                    {/* <p className={styles.profileText}>Welcome to your profile page!</p> */}
+
                                     <h1 className={styles.userName}>
-                                        Hi, {" "}
+                                        Name:{" "}
                                         <span className={styles.profileInfo}>
                                             {authUser.name}
                                         </span>
@@ -60,8 +56,6 @@ const ProfilePage = ({ authUser, loadingAuth, errorAuth }) => {
                                             {authUser.email}
                                         </span>
                                     </h2>
-                                    <p><h2>Desciption:</h2> Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit voluptates voluptatum exercitationem blanditiis
-                                        optio alias hic voluptatem iusto, porro numquam id quis eum nihil.</p>
                                 </div>
                             </div>
                             <div className={styles.likedHousesSection}>
